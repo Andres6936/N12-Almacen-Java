@@ -203,7 +203,7 @@ public class InterfazPuntoDeVenta extends JFrame
     {
         try
         {
-            InterfazPuntoDeVenta interfaz = new InterfazPuntoDeVenta( "./data/puntoDeVenta.properties" );
+            InterfazPuntoDeVenta interfaz = new InterfazPuntoDeVenta( "pointSell.properties" );
             interfaz.setVisible( true );
         }
         catch( Exception e )

@@ -13,11 +13,7 @@
 
 package warehouse.servidor.mundo;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -73,10 +69,13 @@ public class ServidorAlmacen
      */
     private void cargarConfiguracion( String archivo ) throws Exception
     {
-        FileInputStream fis = new FileInputStream( archivo );
+        InputStream file = getClass( ).getClassLoader( ).getResourceAsStream( archivo );
+
+        // The file can be null. Avoid this situation.
+        assert file != null;
+
         configuracion = new Properties( );
-        configuracion.load( fis );
-        fis.close( );
+        configuracion.load( file );
     }
 
     // -----------------------------------------------------------------

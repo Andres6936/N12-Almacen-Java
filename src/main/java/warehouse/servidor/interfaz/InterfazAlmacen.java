@@ -253,7 +253,7 @@ public class InterfazAlmacen extends JFrame
     {
         try
         {
-            ServidorAlmacen servidor = new ServidorAlmacen( "./data/almacen.properties" );
+            ServidorAlmacen servidor = new ServidorAlmacen( "almacen.properties" );
             InterfazAlmacen interfaz = new InterfazAlmacen( servidor.darAlmacen( ) );
             interfaz.setVisible( true );
             servidor.recibirConexiones( );
