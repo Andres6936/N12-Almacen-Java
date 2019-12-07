@@ -38,6 +38,8 @@ dependencies {
 
     // Configuration & Module coordinate:
 
+    compile group: 'org.apache.derby', name: 'derby', version: '10.14.1.0'
+
     testImplementation 'junit:junit:4.12'
 }
 
