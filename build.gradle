@@ -54,11 +54,26 @@ application {
 // application class (with the method main).
 // ...
 // Overwrite the task run.
-task run(type: JavaExec, overwrite: true) {
+task runClient(type: JavaExec, overwrite: true) {
 
     // Configure the application classpath.
     classpath = sourceSets.main.runtimeClasspath
 
     // Configure the application main class.
     main = 'warehouse.cliente.interfaz.InterfazPuntoDeVenta'
+}
+
+// Executes a Java application in a child process.
+// ...
+// Type: JavaExec -> Starts a JVM with the given classpath and
+// application class (with the method main).
+// ...
+// Overwrite the task run.
+task runServer(type: JavaExec, overwrite: true) {
+
+    // Configure the application classpath.
+    classpath = sourceSets.main.runtimeClasspath
+
+    // Configure the application main class.
+    main = 'warehouse.servidor.interfaz.InterfazAlmacen'
 }
