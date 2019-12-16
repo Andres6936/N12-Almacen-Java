@@ -61,8 +61,8 @@ key, which means that there can not be two products with the same code.
 
 Administrator
 
-![InterfaceAdmin](../Screenshots/Administrator.png)
+![InterfaceAdmin](Images/UMLWorehouse.png)
 
 Outlet
 
-![PointSale](../Screenshots/Outlet.png)
+![PointSale](Images/UMLOutlet.png)
