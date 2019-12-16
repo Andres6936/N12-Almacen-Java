@@ -24,11 +24,11 @@ The protocol will be handled specifically in two parts.
 
 1. Register Sale
 
-![]()
+![RegisterSale](../Screenshots/SequenceOutlet.png)
 
 2. Disconnect
 
-![]()
+![Disconnect](../Screenshots/SequenceDisconnect.png)
 
 ## Persistence
 
@@ -61,8 +61,8 @@ key, which means that there can not be two products with the same code.
 
 Administrator
 
-![]()
+![InterfaceAdmin](../Screenshots/Administrator.png)
 
 Outlet
 
-![]()
+![PointSale](../Screenshots/Outlet.png)
