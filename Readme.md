@@ -21,11 +21,11 @@ The protocol will be handled specifically in two parts.
 
 1. Register Sale
 
-![RegisterSale](docs/Screenshots/RegisterSale.jpg)
+![RegisterSale](docs/Screenshots/SequenceOutlet.png)
 
 2. Disconnect
 
-![Disconnet](docs/Screenshots/Disconnet.jpg)
+![Disconnect](docs/Screenshots/SequenceDisconnect.png)
 
  Persistence
 
@@ -50,8 +50,8 @@ means that there can not be two products with the same code.
  
 ### Interface
 
-![InterfaceAdmin](docs/Screenshots/InterfaceAdmin.jpg)
+![InterfaceAdmin](docs/Screenshots/Administrator.png)
 
-![PointSale](docs/Screenshots/PointSale.jpg)
+![PointSale](docs/Screenshots/Outlet.png)
 
-![AddProduct](docs/Screenshots/AddProduct.jpg)
+![AddProduct](docs/Screenshots/AddProduct.png)
