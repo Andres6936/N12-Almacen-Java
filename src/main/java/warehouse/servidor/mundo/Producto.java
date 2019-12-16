@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.mundo;
 
 /**
@@ -52,7 +40,7 @@ public class Producto
      * @param precioP El precio de una unidad del producto
      * @param unidadesP El nómero de unidades disponibles del producto
      */
-    public Producto( String codigoP, String nombreP, int precioP, int unidadesP )
+    Producto( String codigoP, String nombreP, int precioP, int unidadesP )
     {
         codigo = codigoP;
         nombre = nombreP;

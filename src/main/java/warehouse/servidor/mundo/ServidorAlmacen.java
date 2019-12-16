@@ -1,16 +1,3 @@
-/**
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 06-nov-2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.mundo;
 
 import java.io.*;
@@ -28,11 +15,6 @@ public class ServidorAlmacen
     // -----------------------------------------------------------------
     // Atributos
     // -----------------------------------------------------------------
-
-    /**
-     * Es el canal por el que escucha las solicitudes de conexión
-     */
-    private ServerSocket socket;
 
     /**
      * Es el conjunto de propiedades que contiene la configuración de la aplicación
@@ -98,7 +80,8 @@ public class ServidorAlmacen
         int puerto = Integer.parseInt( configuracion.getProperty( "almacen.puerto" ) );
         try
         {
-            socket = new ServerSocket( puerto );
+            // Es el canal por el que escucha las solicitudes de conexión
+            ServerSocket socket = new ServerSocket( puerto );
             while( true )
             {
                 // Esperar una nueva conexión

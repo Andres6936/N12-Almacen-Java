@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id: ManejadorPuntoVenta.java,v 1.3 2007/10/23 15:45:11 dm.puentes64-2 Exp $
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.mundo;
 
 import java.io.BufferedReader;
@@ -29,22 +17,22 @@ public class ManejadorPuntoVenta extends Thread
     /**
      * Comando para desconectar un cliente
      */
-    public final static String DESCONECTAR = "desconectar";
+    private final static String DESCONECTAR = "desconectar";
 
     /**
      * Comando para registrar la venta de un producto
      */
-    public final static String REGISTAR_VENTA = "registrar_venta";
+    private final static String REGISTAR_VENTA = "registrar_venta";
 
     /**
      * Indica un error en la ejecución de un comando
      */
-    public final static String RESULTADO_ERROR = "Error";
+    private final static String RESULTADO_ERROR = "Error";
 
     /**
      * Indica un resultado exitoso en la ejecución de un comando
      */
-    public final static String RESULTADO_OK = "Ok";
+    private final static String RESULTADO_OK = "Ok";
 
     // -----------------------------------------------------------------
     // Atributos
@@ -74,7 +62,7 @@ public class ManejadorPuntoVenta extends Thread
      * @param out2 Es el flujo de salida asociado con el canal de comunicación
      * @param nAlmacen Es el almacón
      */
-    public ManejadorPuntoVenta( BufferedReader in2, PrintWriter out2, Almacen nAlmacen )
+    ManejadorPuntoVenta( BufferedReader in2, PrintWriter out2, Almacen nAlmacen )
     {
         in = in2;
         out = out2;
