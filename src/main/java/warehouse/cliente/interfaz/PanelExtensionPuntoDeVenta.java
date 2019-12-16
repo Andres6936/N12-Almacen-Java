@@ -1,15 +1,3 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$ 
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 25/08/2005 
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- */
-
 package warehouse.cliente.interfaz;
 
 import java.awt.GridBagLayout;
@@ -49,20 +37,6 @@ public class PanelExtensionPuntoDeVenta extends JPanel implements ActionListener
     private InterfazPuntoDeVenta ventana;
 
     // -----------------------------------------------------------------
-    // Atributos de la Interfaz
-    // -----------------------------------------------------------------
-
-    /**
-     * Es el botón 1
-     */
-    private JButton botonOpcion1;
-
-    /**
-     * Es el botón 2
-     */
-    private JButton botonOpcion2;
-
-    // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
 
@@ -71,7 +45,7 @@ public class PanelExtensionPuntoDeVenta extends JPanel implements ActionListener
      * <b>post: </b> Construyó el panel <br>
      * @param ip - Referencia a la ventana principal - ip!=null
      */
-    public PanelExtensionPuntoDeVenta( InterfazPuntoDeVenta ip )
+    PanelExtensionPuntoDeVenta( InterfazPuntoDeVenta ip )
     {
         ventana = ip;
         inicializar( );
@@ -90,11 +64,12 @@ public class PanelExtensionPuntoDeVenta extends JPanel implements ActionListener
         setBorder( new TitledBorder( "Puntos de Extensión" ) );
 
         setLayout( new GridBagLayout( ) );
-        botonOpcion1 = new JButton( "Opción 1" );
+
+        JButton botonOpcion1 = new JButton( "Opción 1" );
         botonOpcion1.setActionCommand( OPCION_1 );
         botonOpcion1.addActionListener( this );
 
-        botonOpcion2 = new JButton( "Opción 2" );
+        JButton botonOpcion2 = new JButton( "Opción 2" );
         botonOpcion2.setActionCommand( OPCION_2 );
         botonOpcion2.addActionListener( this );
 

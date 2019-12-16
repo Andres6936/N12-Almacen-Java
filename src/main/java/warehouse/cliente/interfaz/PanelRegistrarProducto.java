@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.cliente.interfaz;
 
 import java.awt.GridBagConstraints;
@@ -56,21 +44,6 @@ public class PanelRegistrarProducto extends JPanel implements ActionListener
     private JTextField txtCodigo;
 
     /**
-     * Es el botón usado para registrar el producto indicado en la venta
-     */
-    private JButton botonRegistrar;
-
-    /**
-     * Es la etiqueta Código del Producto
-     */
-    private JLabel etiquetaCodigo;
-
-    /**
-     * Es la etiqueta Total
-     */
-    private JLabel etiquetaTotal;
-
-    /**
      * Es el campo donde se muestra el total de la compra
      */
     private JTextField txtTotal;
@@ -83,7 +56,7 @@ public class PanelRegistrarProducto extends JPanel implements ActionListener
      * Construye el panel e inicializa sus componentes
      * @param ipv Es una referencia a la ventana principal del punto de venta
      */
-    public PanelRegistrarProducto( InterfazPuntoDeVenta ipv )
+    PanelRegistrarProducto( InterfazPuntoDeVenta ipv )
     {
         ventanaPrincipal = ipv;
 
@@ -91,7 +64,9 @@ public class PanelRegistrarProducto extends JPanel implements ActionListener
         setBorder( new CompoundBorder( new EmptyBorder( 5, 5, 5, 5 ), new TitledBorder( "Venta Actual" ) ) );
 
         GridBagConstraints gbc = new GridBagConstraints( 1, 0, 2, 1, 0, 0, GridBagConstraints.SOUTHWEST, GridBagConstraints.NONE, new Insets( 5, 5, 5, 5 ), 0, 0 );
-        etiquetaCodigo = new JLabel( "Código del Producto" );
+
+        // Es la etiqueta Código del Producto
+        JLabel etiquetaCodigo = new JLabel( "Código del Producto" );
         add( etiquetaCodigo, gbc );
 
         gbc = new GridBagConstraints( 1, 1, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, new Insets( 5, 5, 5, 5 ), 0, 0 );
@@ -99,14 +74,17 @@ public class PanelRegistrarProducto extends JPanel implements ActionListener
         add( txtCodigo, gbc );
 
         gbc = new GridBagConstraints( 1, 3, 2, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets( 5, 5, 5, 5 ), 0, 0 );
-        botonRegistrar = new JButton( "Vender Unidad" );
+
+        // Es el botón usado para registrar el producto indicado en la venta
+        JButton botonRegistrar = new JButton( "Vender Unidad" );
         botonRegistrar.addActionListener( this );
         botonRegistrar.setActionCommand( REGISTRAR );
         add( botonRegistrar, gbc );
 
         gbc = new GridBagConstraints( 1, 2, 1, 1, 1, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets( 5, 5, 5, 5 ), 0, 0 );
 
-        etiquetaTotal = new JLabel( "Total: " );
+        // Es la etiqueta Total
+        JLabel etiquetaTotal = new JLabel( "Total: " );
         add( etiquetaTotal, gbc );
 
         gbc = new GridBagConstraints( 2, 2, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets( 5, 5, 5, 5 ), 0, 0 );
@@ -125,7 +103,7 @@ public class PanelRegistrarProducto extends JPanel implements ActionListener
      * Cambia el total mostrado para la compra
      * @param total El valor total de la compra
      */
-    public void actualizarTotal( int total )
+    void actualizarTotal( int total )
     {
         txtTotal.setText( "$" + total );
     }
@@ -133,7 +111,7 @@ public class PanelRegistrarProducto extends JPanel implements ActionListener
     /**
      * Limpia el campo de texto del código de barras
      */
-    public void limpiar( )
+    void limpiar( )
     {
         txtCodigo.setText( "" );
     }

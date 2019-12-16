@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.cliente.interfaz;
 
 import java.awt.event.ActionEvent;
@@ -39,15 +27,6 @@ public class PanelBotonesPuntoDeVenta extends JPanel implements ActionListener
     private InterfazPuntoDeVenta ventanaPrincipal;
 
     // -----------------------------------------------------------------
-    // Atributos de la Interfaz
-    // -----------------------------------------------------------------
-
-    /**
-     * Es el botón para iniciar una nueva venta
-     */
-    private JButton botonNuevaVenta;
-
-    // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
 
@@ -55,11 +34,12 @@ public class PanelBotonesPuntoDeVenta extends JPanel implements ActionListener
      * Construye el panel e inicializa sus componentes
      * @param ipv Es una referencia a la ventana principal del punto de venta
      */
-    public PanelBotonesPuntoDeVenta( InterfazPuntoDeVenta ipv )
+    PanelBotonesPuntoDeVenta( InterfazPuntoDeVenta ipv )
     {
         ventanaPrincipal = ipv;
 
-        botonNuevaVenta = new JButton( "Cerrar Venta" );
+        // Es el botón para iniciar una nueva venta
+        JButton botonNuevaVenta = new JButton( "Cerrar Venta" );
         botonNuevaVenta.setActionCommand( NUEVA_VENTA );
         botonNuevaVenta.addActionListener( this );
         add( botonNuevaVenta );

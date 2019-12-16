@@ -31,21 +31,6 @@ public class InterfazPuntoDeVenta extends JFrame
      */
     private PanelRegistrarProducto panelRegistrar;
 
-    /**
-     * Es el panel donde se muestran los botones del punto de venta
-     */
-    private PanelBotonesPuntoDeVenta panelBotones;
-
-    /**
-     * Es la barra con el menó para la aplicación
-     */
-    private BarraMenuPuntoDeVenta barraMenu;
-
-    /**
-     * Es el panel con los botones para los puntos de extensión
-     */
-    private PanelExtensionPuntoDeVenta panelExtension;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -56,7 +41,7 @@ public class InterfazPuntoDeVenta extends JFrame
      * @param archivo El archivo de propiedades con la configuración para el punto de venta
      * @throws Exception Se lanza esta excepción si hay problemas cargando el archivo de propiedades
      */
-    public InterfazPuntoDeVenta( String archivo ) throws Exception
+    private InterfazPuntoDeVenta( String archivo ) throws Exception
     {
         // Crea la clase principal
         puntoDeVenta = new PuntoDeVenta( archivo );
@@ -70,6 +55,24 @@ public class InterfazPuntoDeVenta extends JFrame
     // -----------------------------------------------------------------
 
     /**
+     * Este mótodo ejecuta la aplicación, creando una nueva interfaz
+     *
+     * @param args Arguments : None
+     */
+    public static void main( String[] args )
+    {
+        try
+        {
+            InterfazPuntoDeVenta interfaz = new InterfazPuntoDeVenta( "pointSell.properties" );
+            interfaz.setVisible( true );
+        }
+        catch ( Exception e )
+        {
+            System.out.println( e.getMessage( ) );
+        }
+    }
+
+    /**
      * Este mótodo sirve para construir la forma inicializando cada uno de los componentes. <br>
      * <b>pre: </b> La ventana estó vacóa <br>
      * <b>post: </b> Se inicializaron los componentes gróficos de la aplicación
@@ -80,23 +83,18 @@ public class InterfazPuntoDeVenta extends JFrame
         JPanel panelContenedor = new JPanel( new BorderLayout( ) );
         panelRegistrar = new PanelRegistrarProducto( this );
         panelContenedor.add( panelRegistrar, BorderLayout.CENTER );
-        panelBotones = new PanelBotonesPuntoDeVenta( this );
+
+        // Es el panel donde se muestran los botones del punto de venta
+        PanelBotonesPuntoDeVenta panelBotones = new PanelBotonesPuntoDeVenta( this );
         panelContenedor.add( panelBotones, BorderLayout.SOUTH );
         add( panelContenedor, BorderLayout.CENTER );
-        panelExtension = new PanelExtensionPuntoDeVenta( this );
+
+        // Es el panel con los botones para los puntos de extensión
+        PanelExtensionPuntoDeVenta panelExtension = new PanelExtensionPuntoDeVenta( this );
         add( panelExtension, BorderLayout.SOUTH );
         setSize( 500, 370 );
         setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         setTitle( "Punto de Venta" );
-    }
-
-    /**
-     * Construye el menó de la aplicación
-     */
-    private void construirMenu( )
-    {
-        barraMenu = new BarraMenuPuntoDeVenta( this );
-        setJMenuBar( barraMenu );
     }
 
     /**
@@ -115,12 +113,13 @@ public class InterfazPuntoDeVenta extends JFrame
     }
 
     /**
-     * Este mótodo desconecta el punto de venta del almacón y cierra la aplicación
+     * Construye el menó de la aplicación
      */
-    public void salir( )
+    private void construirMenu( )
     {
-        puntoDeVenta.desconectar( );
-        System.exit( 0 );
+        // Es la barra con el menó para la aplicación
+        BarraMenuPuntoDeVenta barraMenu = new BarraMenuPuntoDeVenta( this );
+        setJMenuBar( barraMenu );
     }
 
     /**
@@ -134,10 +133,19 @@ public class InterfazPuntoDeVenta extends JFrame
     }
 
     /**
+     * Este mótodo desconecta el punto de venta del almacón y cierra la aplicación
+     */
+    void salir( )
+    {
+        puntoDeVenta.desconectar( );
+        System.exit( 0 );
+    }
+
+    /**
      * Agrega a la lista de la compra un producto
      * @param codigo El código del producto que seró agregado a la compra
      */
-    public void registrarProducto( String codigo )
+    void registrarProducto( String codigo )
     {
         try
         {
@@ -154,19 +162,11 @@ public class InterfazPuntoDeVenta extends JFrame
     /**
      * Inicia una nueva compra
      */
-    public void limpiar( )
+    void limpiar( )
     {
         puntoDeVenta.limpiar( );
         panelRegistrar.limpiar( );
         actualizarTotal( );
-    }
-
-    /**
-     * Actualiza el valor total de los productos de la compra
-     */
-    public void actualizarTotal( )
-    {
-        panelRegistrar.actualizarTotal( puntoDeVenta.darTotal( ) );
     }
 
     // -----------------------------------------------------------------
@@ -174,20 +174,19 @@ public class InterfazPuntoDeVenta extends JFrame
     // -----------------------------------------------------------------
 
     /**
-     * Mótodo para la extensión 1
+     * Actualiza el valor total de los productos de la compra
      */
-    public void reqFuncOpcion1( )
+    private void actualizarTotal( )
     {
-        String resultado = puntoDeVenta.metodo1( );
-        JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
+        panelRegistrar.actualizarTotal( puntoDeVenta.darTotal( ) );
     }
 
     /**
-     * Mótodo para la extensión 2
+     * Mótodo para la extensión 1
      */
-    public void reqFuncOpcion2( )
+    void reqFuncOpcion1( )
     {
-        String resultado = puntoDeVenta.metodo2( );
+        String resultado = puntoDeVenta.metodo1( );
         JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
     }
 
@@ -196,19 +195,11 @@ public class InterfazPuntoDeVenta extends JFrame
     // -----------------------------------------------------------------
 
     /**
-     * Este mótodo ejecuta la aplicación, creando una nueva interfaz
-     * @param args
+     * Mótodo para la extensión 2
      */
-    public static void main( String[] args )
+    void reqFuncOpcion2( )
     {
-        try
-        {
-            InterfazPuntoDeVenta interfaz = new InterfazPuntoDeVenta( "pointSell.properties" );
-            interfaz.setVisible( true );
-        }
-        catch( Exception e )
-        {
-            System.out.println( e.getMessage( ) );
-        }
+        String resultado = puntoDeVenta.metodo2( );
+        JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
     }
 }
