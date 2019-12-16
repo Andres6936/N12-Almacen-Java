@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.cliente.mundo;
 
 import java.io.*;
@@ -28,7 +16,7 @@ public class PuntoDeVenta
     /**
      * Indica un resultado exitoso en la ejecución de un comando
      */
-    public final static String RESULTADO_OK = "Ok";
+    private final static String RESULTADO_OK = "Ok";
 
     /**
      * Indica un error en la ejecución de un comando
@@ -38,12 +26,12 @@ public class PuntoDeVenta
     /**
      * Comando para registrar la venta de un producto
      */
-    public final static String REGISTAR_VENTA = "registrar_venta";
+    private final static String REGISTAR_VENTA = "registrar_venta";
 
     /**
      * Comando para desconectar un cliente
      */
-    public final static String DESCONECTAR = "desconectar";
+    private final static String DESCONECTAR = "desconectar";
 
     // -----------------------------------------------------------------
     // Atributos
@@ -138,7 +126,7 @@ public class PuntoDeVenta
                 socket.close( );
             }
         }
-        catch( IOException e )
+        catch ( IOException ignored )
         {
         }
         socket = null;
