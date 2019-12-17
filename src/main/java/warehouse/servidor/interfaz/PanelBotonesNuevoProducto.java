@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.interfaz;
 
 import java.awt.event.ActionEvent;
@@ -47,20 +35,6 @@ public class PanelBotonesNuevoProducto extends JPanel implements ActionListener
     private DialogoNuevoProducto dialogo;
 
     // -----------------------------------------------------------------
-    // Atributos de la Interfaz
-    // -----------------------------------------------------------------
-
-    /**
-     * El botón para agregar un producto con los datos actuales
-     */
-    private JButton botonAgregar;
-
-    /**
-     * El botón para cerrar el diólogo
-     */
-    private JButton botonCancelar;
-
-    // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
 
@@ -68,16 +42,18 @@ public class PanelBotonesNuevoProducto extends JPanel implements ActionListener
      * Construye el panel e inicializa sus componentes
      * @param dnp Es una referencia al diólogo del cual hace parte este panel
      */
-    public PanelBotonesNuevoProducto( DialogoNuevoProducto dnp )
+    PanelBotonesNuevoProducto( DialogoNuevoProducto dnp )
     {
         dialogo = dnp;
 
-        botonAgregar = new JButton( "Agregar" );
+        // El botón para agregar un producto con los datos actuales
+        JButton botonAgregar = new JButton( "Agregar" );
         botonAgregar.setActionCommand( AGREGAR );
         botonAgregar.addActionListener( this );
         add( botonAgregar );
 
-        botonCancelar = new JButton( "Cancelar" );
+        // El botón para cerrar el diólogo
+        JButton botonCancelar = new JButton( "Cancelar" );
         botonCancelar.setActionCommand( CANCELAR );
         botonCancelar.addActionListener( this );
         add( botonCancelar );

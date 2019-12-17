@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.interfaz;
 
 import java.awt.BorderLayout;
@@ -44,7 +32,7 @@ public class PanelProductosAdministrador extends JPanel
     /**
      * Construye el panel e inicializa sus componentes
      */
-    public PanelProductosAdministrador( )
+    PanelProductosAdministrador( )
     {
         setBorder( new EmptyBorder( 5, 5, 5, 5 ) );
         setLayout( new BorderLayout( ) );
@@ -77,7 +65,7 @@ public class PanelProductosAdministrador extends JPanel
      * Actualiza la lista de productos mostrados
      * @param productos La lista con los productos que deben mostrarse
      */
-    public void actualizarProductos( ArrayList productos )
+    void actualizarProductos( ArrayList productos )
     {
         listaProductos.setListData( productos.toArray( ) );
     }

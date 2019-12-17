@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.interfaz;
 
 import java.awt.GridBagConstraints;
@@ -23,7 +11,7 @@ import javax.swing.JTextField;
 /**
  * Es el panel donde se introducen los datos del nuevo producto
  */
-public class PanelDatosNuevoProducto extends JPanel
+class PanelDatosNuevoProducto extends JPanel
 {
     // -----------------------------------------------------------------
     // Atributos de la Interfaz
@@ -48,26 +36,6 @@ public class PanelDatosNuevoProducto extends JPanel
      */
     private JTextField txtUnidades;
 
-    /**
-     * Etiqueta Nombre
-     */
-    private JLabel etiquetaNombre;
-
-    /**
-     * Etiqueta Precio
-     */
-    private JLabel etiquetaPrecio;
-
-    /**
-     * Etiqueta Unidades Iniciales
-     */
-    private JLabel etiquetaUnidades;
-
-    /**
-     * Etiqueta Código
-     */
-    private JLabel etiquetaCodigo;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -75,25 +43,28 @@ public class PanelDatosNuevoProducto extends JPanel
     /**
      * Construye el panel e inicializa sus componentes
      */
-    public PanelDatosNuevoProducto( )
+    PanelDatosNuevoProducto( )
     {
         setLayout( new GridBagLayout( ) );
 
         GridBagConstraints gbcEtiqueta = new GridBagConstraints( 0, 0, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets( 5, 5, 5, 5 ), 0, 0 );
 
-        etiquetaCodigo = new JLabel( "Código:" );
+        JLabel etiquetaCodigo = new JLabel( "Código:" );
         add( etiquetaCodigo, gbcEtiqueta );
 
         gbcEtiqueta.gridy = 1;
-        etiquetaNombre = new JLabel( "Nombre:" );
+
+        JLabel etiquetaNombre = new JLabel( "Nombre:" );
         add( etiquetaNombre, gbcEtiqueta );
 
         gbcEtiqueta.gridy = 2;
-        etiquetaPrecio = new JLabel( "Precio:" );
+
+        JLabel etiquetaPrecio = new JLabel( "Precio:" );
         add( etiquetaPrecio, gbcEtiqueta );
 
         gbcEtiqueta.gridy = 3;
-        etiquetaUnidades = new JLabel( "Unidades Iniciales:" );
+
+        JLabel etiquetaUnidades = new JLabel( "Unidades Iniciales:" );
         add( etiquetaUnidades, gbcEtiqueta );
 
         GridBagConstraints gbcCampo = new GridBagConstraints( 1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets( 5, 5, 5, 5 ), 0, 0 );
@@ -122,7 +93,7 @@ public class PanelDatosNuevoProducto extends JPanel
      * Retorna el código del producto
      * @return el código del producto
      */
-    public String darCodigo( )
+    String darCodigo( )
     {
         return txtCodigo.getText( );
     }
@@ -131,7 +102,7 @@ public class PanelDatosNuevoProducto extends JPanel
      * Retorna el nombre del producto
      * @return el nombre del producto
      */
-    public String darNombre( )
+    String darNombre( )
     {
         return txtNombre.getText( );
     }
@@ -140,7 +111,7 @@ public class PanelDatosNuevoProducto extends JPanel
      * Retorna el precio del producto
      * @return el precio del producto
      */
-    public String darPrecio( )
+    String darPrecio( )
     {
         return txtPrecio.getText( );
     }
@@ -149,7 +120,7 @@ public class PanelDatosNuevoProducto extends JPanel
      * Retorna el nómero de unidades iniciales del producto
      * @return el nómero de unidades iniciales del producto
      */
-    public String darUnidades( )
+    String darUnidades( )
     {
         return txtUnidades.getText( );
     }

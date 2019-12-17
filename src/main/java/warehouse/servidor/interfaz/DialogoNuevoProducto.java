@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 6/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.interfaz;
 
 import java.awt.BorderLayout;
@@ -20,7 +8,7 @@ import javax.swing.JOptionPane;
 /**
  * Es el diólogo que se usa para agregar los datos de un nuevo producto
  */
-public class DialogoNuevoProducto extends JDialog
+class DialogoNuevoProducto extends JDialog
 {
     // -----------------------------------------------------------------
     // Atributos
@@ -40,11 +28,6 @@ public class DialogoNuevoProducto extends JDialog
      */
     private PanelDatosNuevoProducto panelDatos;
 
-    /**
-     * Es el panel con los botones que controlan el diólogo
-     */
-    private PanelBotonesNuevoProducto panelBotones;
-
     // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
@@ -53,13 +36,15 @@ public class DialogoNuevoProducto extends JDialog
      * Construye el diólogo e inicializa sus componentes
      * @param ia Es una referencia a la ventana principal del administrador
      */
-    public DialogoNuevoProducto( InterfazAlmacen ia )
+    DialogoNuevoProducto( InterfazAlmacen ia )
     {
         super( ia, true );
         ventanaPrincipal = ia;
 
         panelDatos = new PanelDatosNuevoProducto( );
-        panelBotones = new PanelBotonesNuevoProducto( this );
+
+        // Es el panel con los botones que controlan el diólogo
+        PanelBotonesNuevoProducto panelBotones = new PanelBotonesNuevoProducto( this );
 
         add( panelDatos, BorderLayout.CENTER );
         add( panelBotones, BorderLayout.SOUTH );
@@ -76,7 +61,7 @@ public class DialogoNuevoProducto extends JDialog
     /**
      * Agrega un nuevo producto al almacón
      */
-    public void agregarProducto( )
+    void agregarProducto( )
     {
         try
         {

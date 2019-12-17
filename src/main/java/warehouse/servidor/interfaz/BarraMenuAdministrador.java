@@ -1,15 +1,3 @@
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 8/11/2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.interfaz;
 
 import java.awt.event.ActionEvent;
@@ -44,20 +32,6 @@ public class BarraMenuAdministrador extends JMenuBar implements ActionListener
     private InterfazAlmacen ventanaPrincipal;
 
     // -----------------------------------------------------------------
-    // Atributos de la Interfaz
-    // -----------------------------------------------------------------
-
-    /**
-     * Es el menó Administrador
-     */
-    private JMenu menuAdministrador;
-
-    /**
-     * Es la opción del menó para salir de la aplicación
-     */
-    private JMenuItem itemSalir;
-
-    // -----------------------------------------------------------------
     // Constructores
     // -----------------------------------------------------------------
 
@@ -65,15 +39,16 @@ public class BarraMenuAdministrador extends JMenuBar implements ActionListener
      * Construye el menó e inicializa sus componentes
      * @param ia Es una referencia a la ventana principal del administrador
      */
-    public BarraMenuAdministrador( InterfazAlmacen ia )
+    BarraMenuAdministrador( InterfazAlmacen ia )
     {
         ventanaPrincipal = ia;
 
-        menuAdministrador = new JMenu( "Administrador" );
+        JMenu menuAdministrador = new JMenu( "Administrador" );
         menuAdministrador.setMnemonic( KeyEvent.VK_A );
         add( menuAdministrador );
 
-        itemSalir = new JMenuItem( "Salir" );
+        // Es la opción del menó para salir de la aplicación
+        JMenuItem itemSalir = new JMenuItem( "Salir" );
         itemSalir.setMnemonic( KeyEvent.VK_S );
         itemSalir.setActionCommand( SALIR );
         itemSalir.addActionListener( this );

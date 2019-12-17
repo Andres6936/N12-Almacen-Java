@@ -1,16 +1,3 @@
-/**
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$
- * Universidad de los Andes (Bogotó - Colombia)
- * Departamento de Ingenieróa de Sistemas y Computación 
- * Licenciado bajo el esquema Academic Free License versión 2.1
- *
- * Proyecto Cupi2 (http://cupi2.uniandes.edu.co)
- * Ejercicio: n12_almacen
- * Autor: Mario Sónchez - 06-nov-2005
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package warehouse.servidor.interfaz;
 
 import java.awt.BorderLayout;
@@ -41,24 +28,9 @@ public class InterfazAlmacen extends JFrame
     // -----------------------------------------------------------------
 
     /**
-     * Es la barra con el menó para la aplicación
-     */
-    private BarraMenuAdministrador barraMenu;
-
-    /**
      * Es el panel donde se muestran los productos que hay actualmente en el almacón
      */
     private PanelProductosAdministrador panelProductos;
-
-    /**
-     * Es el panel donde se muestran los botones para controlar la aplicación del administrador
-     */
-    private PanelBotonesAdministrador panelBotones;
-
-    /**
-     * Es el panel con los botones para los puntos de extensión
-     */
-    private PanelExtensionAlmacen panelExtension;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -69,7 +41,7 @@ public class InterfazAlmacen extends JFrame
      * @param elAlmacen Es el almacón que se va a usar en esta aplicación
      * @throws Exception Se lanza esta excepción si hay problemas cargando el archivo de propiedades
      */
-    public InterfazAlmacen( Almacen elAlmacen ) throws Exception
+    private InterfazAlmacen( Almacen elAlmacen ) throws Exception
     {
         // Crea la clase principal
         almacen = elAlmacen;
@@ -83,6 +55,35 @@ public class InterfazAlmacen extends JFrame
     // -----------------------------------------------------------------
 
     /**
+     * Este mótodo ejecuta la aplicación, creando una nueva interfaz
+     *
+     * @param args Arguments : None
+     */
+    public static void main( String[] args )
+    {
+        try
+        {
+            ServidorAlmacen servidor = new ServidorAlmacen( "almacen.properties" );
+            InterfazAlmacen interfaz = new InterfazAlmacen( servidor.darAlmacen( ) );
+            interfaz.setVisible( true );
+            servidor.recibirConexiones( );
+        }
+        catch ( SQLException e )
+        {
+            SQLException s2 = e;
+            while ( s2 != null )
+            {
+                System.out.println( s2.getMessage( ) );
+                s2 = s2.getNextException( );
+            }
+        }
+        catch ( Exception e )
+        {
+            System.out.println( e.getMessage( ) );
+        }
+    }
+
+    /**
      * Este mótodo sirve para construir la forma inicializando cada uno de los componentes. <br>
      * <b>pre: </b> La ventana estó vacóa <br>
      * <b>post: </b> Se inicializaron los componentes gróficos de la aplicación
@@ -94,10 +95,12 @@ public class InterfazAlmacen extends JFrame
         panelProductos = new PanelProductosAdministrador( );
         add( panelProductos, BorderLayout.CENTER );
 
-        panelBotones = new PanelBotonesAdministrador( this );
+        // Es el panel donde se muestran los botones para controlar la aplicación del administrador
+        PanelBotonesAdministrador panelBotones = new PanelBotonesAdministrador( this );
         add( panelBotones, BorderLayout.EAST );
 
-        panelExtension = new PanelExtensionAlmacen( this );
+        // Es el panel con los botones para los puntos de extensión
+        PanelExtensionAlmacen panelExtension = new PanelExtensionAlmacen( this );
         add( panelExtension, BorderLayout.SOUTH );
 
         setSize( 630, 330 );
@@ -110,24 +113,9 @@ public class InterfazAlmacen extends JFrame
      */
     private void construirMenu( )
     {
-        barraMenu = new BarraMenuAdministrador( this );
+        // Es la barra con el menó para la aplicación
+        BarraMenuAdministrador barraMenu = new BarraMenuAdministrador( this );
         setJMenuBar( barraMenu );
-    }
-
-    /**
-     * Este mótodo desconecta el administrador del almacón y cierra la aplicación
-     */
-    public void salir( )
-    {
-        try
-        {
-            almacen.desconectarBD( );
-        }
-        catch( SQLException e )
-        {
-            JOptionPane.showMessageDialog( this, e.getMessage( ), "Error", JOptionPane.ERROR_MESSAGE );
-        }
-        System.exit( 0 );
     }
 
     /**
@@ -157,9 +145,25 @@ public class InterfazAlmacen extends JFrame
     }
 
     /**
+     * Este mótodo desconecta el administrador del almacón y cierra la aplicación
+     */
+    void salir( )
+    {
+        try
+        {
+            almacen.desconectarBD( );
+        }
+        catch ( SQLException e )
+        {
+            JOptionPane.showMessageDialog( this, e.getMessage( ), "Error", JOptionPane.ERROR_MESSAGE );
+        }
+        System.exit( 0 );
+    }
+
+    /**
      * Muestra el diólogo para agregar un producto
      */
-    public void mostrarDialogoAgregarProducto( )
+    void mostrarDialogoAgregarProducto( )
     {
         DialogoNuevoProducto dnp = new DialogoNuevoProducto( this );
         dnp.setVisible( true );
@@ -174,7 +178,7 @@ public class InterfazAlmacen extends JFrame
      * @param precio El precio del nuevo producto
      * @param unidades El nómero de unidades iniciales
      */
-    public void agregarProducto( DialogoNuevoProducto dialogo, String codigo, String nombre, int precio, int unidades )
+    void agregarProducto( DialogoNuevoProducto dialogo, String codigo, String nombre, int precio, int unidades )
     {
         try
         {
@@ -191,7 +195,7 @@ public class InterfazAlmacen extends JFrame
     /**
      * Actualiza la lista de productos comunicóndose con el servidor y muestra la lista actualizada
      */
-    public void refrescar( )
+    void refrescar( )
     {
         try
         {
@@ -203,10 +207,14 @@ public class InterfazAlmacen extends JFrame
         }
     }
 
+    // -----------------------------------------------------------------
+    // Puntos de Extensión
+    // -----------------------------------------------------------------
+
     /**
      * Actualiza la lista de productos mostrada
      */
-    public void actualizarProductos( )
+    private void actualizarProductos( )
     {
         try
         {
@@ -219,25 +227,12 @@ public class InterfazAlmacen extends JFrame
         }
     }
 
-    // -----------------------------------------------------------------
-    // Puntos de Extensión
-    // -----------------------------------------------------------------
-
     /**
      * Mótodo para la extensión 1
      */
-    public void reqFuncOpcion1( )
+    void reqFuncOpcion1( )
     {
         String resultado = almacen.metodo1( );
-        JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
-    }
-
-    /**
-     * Mótodo para la extensión 2
-     */
-    public void reqFuncOpcion2( )
-    {
-        String resultado = almacen.metodo2( );
         JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
     }
 
@@ -246,30 +241,11 @@ public class InterfazAlmacen extends JFrame
     // -----------------------------------------------------------------
 
     /**
-     * Este mótodo ejecuta la aplicación, creando una nueva interfaz
-     * @param args
+     * Mótodo para la extensión 2
      */
-    public static void main( String[] args )
+    void reqFuncOpcion2( )
     {
-        try
-        {
-            ServidorAlmacen servidor = new ServidorAlmacen( "almacen.properties" );
-            InterfazAlmacen interfaz = new InterfazAlmacen( servidor.darAlmacen( ) );
-            interfaz.setVisible( true );
-            servidor.recibirConexiones( );
-        }
-        catch( SQLException e )
-        {
-            SQLException s2 = e;
-            while( s2 != null )
-            {
-                System.out.println( s2.getMessage( ) );
-                s2 = s2.getNextException( );
-            }
-        }
-        catch( Exception e )
-        {
-            System.out.println( e.getMessage( ) );
-        }
+        String resultado = almacen.metodo2( );
+        JOptionPane.showMessageDialog( this, resultado, "Respuesta", JOptionPane.INFORMATION_MESSAGE );
     }
 }
